@@ -1552,7 +1552,7 @@ export default function Nosotros() {
                     </div>
                   ))}
                   <div style={{ width: 1, height: 18, background: 'rgba(26,127,232,0.12)' }} />
-                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.32)' }}>33 empleos directos · 2 estaciones</span>
+                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 500, color: 'rgba(255,255,255,0.32)' }}>300 empleos directos · 2 estaciones</span>
                 </div>
               </Reveal>
             </div>
