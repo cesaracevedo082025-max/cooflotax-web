@@ -139,9 +139,74 @@ const DOCS = [
     vigencia: "2023",
     fecha: "2023",
   },
+
+  // ── VIGENCIA 2024 ──────────────────────────────────────────────────────
+  {
+    nombre: "Estados Financieros — 2024",
+    archivo: "/documentos_essa_2024/ESTADOS FINANCIEROS-2024.pdf",
+    categoria: "Financieros",
+    vigencia: "2024",
+    fecha: "Dic 2024",
+  },
+  {
+    nombre: "Numeral 1 · Denominación, identificación y domicilio",
+    archivo: "/documentos_essa_2024/DOMICILIO .pdf",
+    categoria: "Legales",
+    vigencia: "2024",
+    fecha: "2024",
+  },
+  {
+    nombre: "Numeral 2 · Informe de Gestión — 2024",
+    archivo: "/documentos_essa_2024/INFORME DE GESTION AÑO.pdf",
+    categoria: "Informes",
+    vigencia: "2024",
+    fecha: "2024",
+  },
+  {
+    nombre: "Numeral 3 · Excedentes a disposición",
+    archivo: "/documentos_essa_2024/EXCEDENTES A DISPOSICION .pdf",
+    categoria: "Financieros",
+    vigencia: "2024",
+    fecha: "2024",
+  },
+  {
+    nombre: "Numeral 4 · Cumplimiento Régimen Tributario Especial",
+    archivo: "/documentos_essa_2024/CUMPLIMENTO DE LOS REQUISITOS.pdf",
+    categoria: "Legales",
+    vigencia: "2024",
+    fecha: "2024",
+  },
+  {
+    nombre: "Numeral 5 · Antecedentes",
+    archivo: "/documentos_essa_2024/ANTECEDENTES .pdf",
+    categoria: "Legales",
+    vigencia: "2024",
+    fecha: "2024",
+  },
+  {
+    nombre: "Numeral 6 · Cargos directivos y pagos salariales",
+    archivo: "/documentos_essa_2024/CARGOS DIRCTIVOS Y PAGOS SALARIALES.pdf",
+    categoria: "Directivos",
+    vigencia: "2024",
+    fecha: "2024",
+  },
+  {
+    nombre: "Numeral 8 · Monto del patrimonio 2024",
+    archivo: "/documentos_essa_2024/PATRIMONIO .pdf",
+    categoria: "Financieros",
+    vigencia: "2024",
+    fecha: "Dic 2024",
+  },
+  {
+    nombre: "Numeral 9 · Memoria Económica 2024",
+    archivo: "/documentos_essa_2024/MEMORIA ECONOMICA 2024.pdf",
+    categoria: "Informes",
+    vigencia: "2024",
+    fecha: "2024",
+  },
 ]
 
-const VIGENCIAS = ["Todas", "2022", "2023"]
+const VIGENCIAS = ["Todas", "2022", "2023", "2024"]
 const CATEGORIAS = ["Todas", ...Array.from(new Set(DOCS.map((d) => d.categoria)))]
 
 const CATEGORIA_STYLES = {
@@ -242,7 +307,7 @@ export default function DocumentosPage() {
           fontSize: 13, color: 'rgba(255,255,255,0.40)',
           fontFamily: "'DM Sans', sans-serif", position: 'relative',
         }}>
-          {DOCS.length} documentos oficiales · Vigencias 2022 y 2023
+          {DOCS.length} documentos oficiales · Vigencias 2022, 2023 y 2024
         </p>
       </div>
 

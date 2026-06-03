@@ -423,22 +423,22 @@ export default function Home() {
 
               {/* CTAs */}
               <div
-                className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 transition-all duration-700 ease-out w-full ${
+                className={`flex flex-row flex-wrap items-center gap-2 sm:gap-4 transition-all duration-700 ease-out ${
                   introComplete ? 'translate-y-0 opacity-100 delay-[800ms]' : 'translate-y-6 opacity-0'
                 }`}
               >
                 <Link
                   href="/rutas"
-                  className="btn-corporate-primary text-white justify-center px-6 py-3 sm:px-7 sm:py-3.5 md:px-8 md:py-4 rounded-full text-sm sm:text-base font-bold flex items-center gap-2 sm:gap-3 text-center"
+                  className="btn-corporate-primary text-white justify-center px-4 py-2 sm:px-7 sm:py-3.5 md:px-8 md:py-4 rounded-full text-xs sm:text-base font-bold flex items-center gap-1.5 sm:gap-3 text-center"
                 >
                   Ver Rutas y Tarifas
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="sm:w-[17px] sm:h-[17px]">
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </Link>
                 <Link
                   href="/contacto"
-                  className="btn-corporate-secondary text-white text-center px-6 py-3 sm:px-8 sm:py-3.5 rounded-full text-sm sm:text-base font-semibold"
+                  className="btn-corporate-secondary text-white text-center px-4 py-2 sm:px-8 sm:py-3.5 rounded-full text-xs sm:text-base font-semibold"
                 >
                   Contactanos
                 </Link>

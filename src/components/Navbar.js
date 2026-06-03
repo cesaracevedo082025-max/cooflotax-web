@@ -104,7 +104,11 @@ export default function Navbar() {
   // ✅ Cleanup correcto al desmontar + scroll al cerrar menú
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    document.body.classList.toggle('mobile-menu-open', isMobileMenuOpen);
+    return () => {
+      document.body.style.overflow = '';
+      document.body.classList.remove('mobile-menu-open');
+    };
   }, [isMobileMenuOpen]);
 
   // ✅ useCallback para no recrear la función en cada render

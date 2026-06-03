@@ -1,17 +1,19 @@
 'use client';
 import { useState } from 'react';
 
-export default function WhatsappButton({ visible = true }) {
-  const [open, setOpen] = useState(false);
+export default function WhatsappButton({ visible = true, open, onToggle }) {
+  const [localOpen, setLocalOpen] = useState(false);
+  const isOpen = open !== undefined ? open : localOpen;
+  const toggle = onToggle ?? (() => setLocalOpen(v => !v));
   const phone = '573103332323';
   const message = encodeURIComponent('Hola Cooflotax, me gustaría obtener más información.');
   const url = `https://wa.me/${phone}?text=${message}`;
 
   return (
     <>
-      {open && visible && (
+      {isOpen && visible && (
         <div style={{
-          position: 'fixed', bottom: 98, right: 28, zIndex: 9998,
+          position: 'fixed', bottom: 28, right: 98, zIndex: 9998,
           background: 'white', borderRadius: 16, padding: '14px 16px',
           width: 240, boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
           border: '1px solid rgba(0,0,0,0.08)',
@@ -41,7 +43,7 @@ export default function WhatsappButton({ visible = true }) {
       )}
 
       <button
-        onClick={() => setOpen(!open)}
+        onClick={toggle}
         style={{
           position: 'fixed', bottom: 28, right: 28, zIndex: 9999,
           width: 58, height: 58, borderRadius: '50%',

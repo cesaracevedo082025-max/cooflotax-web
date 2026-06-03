@@ -44,13 +44,18 @@ export const metadata = {
   title: 'COOFLOTAX | Cooperativa de Transportadores - Duitama, Boyacá',
   description: 'Cooperativa de Transportadores Flotax Duitama. Servicio de transporte intermunicipal e interurbano en Boyacá desde 1964. Servimos con Calidez.',
   keywords: 'transporte, Duitama, Boyacá, Cooflotax, intermunicipal, buses, taxis, cooperativa',
+  icons: {
+    icon: '/logo.webp',
+    shortcut: '/logo.webp',
+    apple: '/logo.webp',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.webp" type="image/webp" />
         <meta name="theme-color" content="#0e3faf" />
       </head>
       <body className={`

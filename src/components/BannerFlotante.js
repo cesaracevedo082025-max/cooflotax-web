@@ -6,11 +6,18 @@ import Image from 'next/image';
 const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.duitaxicootrachica.duitama';
 const REDBUS_URL = 'https://www.redbus.co/pasajes-de-bus/duitama-a-terminal-de-tunja?fromCityName=Duitama%20(Boy)%20(Todos)&fromCityId=195186&srcCountry=COL&fromCityType=CITY&toCityName=Terminal%20de%20Tunja%2C%20Tunja%20(Boy)&toCityId=202841&destCountry=COL&toCityType=AREA&onward=20-Mar-2026&doj=20-Mar-2026&ref=home';
 
-export default function BannerFlotante({ visible = true }) {
+export default function BannerFlotante({ visible = true, onAnyOpen, closeAllSignal = 0 }) {
   const [openRedbus, setOpenRedbus] = useState(false);
   const [openDuitaxi, setOpenDuitaxi] = useState(false);
   const [tooltipRedbus, setTooltipRedbus] = useState(false);
   const [tooltipDuitaxi, setTooltipDuitaxi] = useState(false);
+
+  useEffect(() => {
+    if (closeAllSignal > 0) {
+      setOpenRedbus(false);
+      setOpenDuitaxi(false);
+    }
+  }, [closeAllSignal]);
 
   // Mostrar tooltips automáticamente al aparecer los botones
   useEffect(() => {
@@ -27,12 +34,16 @@ export default function BannerFlotante({ visible = true }) {
   if (!visible) return null;
 
   const toggleRedbus = () => {
+    const opening = !openRedbus;
+    if (opening) onAnyOpen?.();
     setOpenRedbus(v => !v);
     setOpenDuitaxi(false);
     setTooltipRedbus(false);
   };
 
   const toggleDuitaxi = () => {
+    const opening = !openDuitaxi;
+    if (opening) onAnyOpen?.();
     setOpenDuitaxi(v => !v);
     setOpenRedbus(false);
     setTooltipDuitaxi(false);

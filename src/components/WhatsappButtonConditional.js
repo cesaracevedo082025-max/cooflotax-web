@@ -8,20 +8,20 @@ import BannerFlotante from './BannerFlotante';
 export default function WhatsappButtonConditional() {
   const pathname = usePathname();
   const [showButton, setShowButton] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [waOpen, setWaOpen] = useState(false);
+  const [closeFloatersSignal, setCloseFloatersSignal] = useState(0);
   const prevPathname = useRef(pathname);
 
   useEffect(() => {
     const isHome = pathname === '/';
-    const cameFromElsewhere = prevPathname.current !== '/';
     prevPathname.current = pathname;
 
     if (!isHome) {
-      // En cualquier otra ruta: mostrar siempre
       setShowButton(true);
       return;
     }
 
-    // Llegamos al home: ocultar inmediatamente sin importar el estado anterior
     setShowButton(false);
 
     const handleIntroFinished = () => setShowButton(true);
@@ -29,10 +29,28 @@ export default function WhatsappButtonConditional() {
     return () => window.removeEventListener('introTerminada', handleIntroFinished);
   }, [pathname]);
 
+  // Ocultar flotantes en móvil cuando el navbar está abierto
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setMobileMenuOpen(document.body.classList.contains('mobile-menu-open'));
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
+
+  const handleWaToggle = () => {
+    if (!waOpen) setCloseFloatersSignal(s => s + 1); // cerrar Duitaxi/RedBus al abrir WA
+    setWaOpen(v => !v);
+  };
+
+  const handleFloaterOpen = () => setWaOpen(false); // cerrar WA al abrir Duitaxi/RedBus
+
+  const floatersVisible = showButton && !mobileMenuOpen;
+
   return (
     <>
-      <WhatsappButton visible={showButton} />
-      <BannerFlotante visible={showButton} />
+      <WhatsappButton visible={floatersVisible} open={waOpen} onToggle={handleWaToggle} />
+      <BannerFlotante visible={floatersVisible} onAnyOpen={handleFloaterOpen} closeAllSignal={closeFloatersSignal} />
     </>
   );
 }
